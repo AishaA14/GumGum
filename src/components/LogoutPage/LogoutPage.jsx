@@ -5,7 +5,7 @@ const LogoutPage = () => {
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
     (async () => {
       try {
-        const { data } = await axios.post(
+         await axios.post(
             `${backendUrl}/logout/`,
           {
             refresh_token: localStorage.getItem("refresh_token"),
