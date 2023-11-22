@@ -3,11 +3,12 @@ import axios from 'axios';
 
 export default function Dashboard() {
   const [message, setMessage] = useState("");
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const { data } = await axios.get("http://localhost:8000/home/", {
+        const { data } = await axios.get(`${backendUrl}/home/`, {
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${localStorage.getItem("access_token")}`
