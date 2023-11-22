@@ -5,6 +5,7 @@ import { useState } from "react"
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   // Create the submit method.
   const submit = async (e) => {
     e.preventDefault();
@@ -13,7 +14,7 @@ export default function LoginPage() {
       password: password,
     };
     // Create the POST requuest
-    const { data } = await axios.post("http://localhost:8000/token/", user,
+    const { data } = await axios.post(`${backendUrl}/token/`, user,
     {
       headers: { "Content-Type": "application/json" },
     },

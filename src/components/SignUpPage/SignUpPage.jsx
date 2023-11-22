@@ -7,7 +7,7 @@ export default function SignupPage() {
     email: "",
     password: "",
   });
-
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -20,7 +20,7 @@ export default function SignupPage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/signup/",
+        `${backendUrl}/signup/`,
         formData
       );
 

@@ -3,9 +3,9 @@ import axios from 'axios';
 
 export default function Dashboard() {
   const [message, setMessage] = useState("");
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
-
+  
   useEffect(() => {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
     const checkAuthentication = async () => {
       try {
         const { data } = await axios.get(`${backendUrl}/home/`, {

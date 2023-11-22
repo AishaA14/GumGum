@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import axios from "axios";
 const LogoutPage = () => {
-  useEffect(() => {
+    useEffect(() => {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
     (async () => {
       try {
         const { data } = await axios.post(
-          "http://localhost:8000/logout/",
+            `${backendUrl}/logout/`,
           {
             refresh_token: localStorage.getItem("refresh_token"),
           },
