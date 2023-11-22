@@ -9,6 +9,7 @@ import SignupPage from './components/SignUpPage/SignUpPage';
 import LoginPage from './components/LoginPage/LoginPage';
 import LogoutPage from './components/LogoutPage/LogoutPage';
 import EditGoalPage from './components/EditGoalPage/EditGoalPage';
+import HabitPage from './components/HabitPage/HabitPage';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         <Route path="/signup" element={<SignupPage/>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/logout" element={<LogoutPage />} />
-        <Route path="/edit-goal/:id" element={<EditGoalPage />} />
+        <Route path="/edit_goal/:id" element={<EditGoalPage />} />
+        <Route path="/habits/:goalId" element={<HabitPage/>} />
       </Routes>
     </div>
   );
