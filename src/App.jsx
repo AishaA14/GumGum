@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Dashboard from './components/Dashboard/Dashboard';
 import AboutPage from './components/AboutPage/AboutPage';
@@ -12,7 +12,7 @@ import HabitPage from './components/HabitPage/HabitPage';
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <NavBar />
       <Routes>
         <Route path="/" element={<Dashboard />} />
@@ -24,7 +24,7 @@ function App() {
         <Route path="/edit_goal/:id" element={<EditGoalPage />} />
         <Route path="/habits/:goalId" element={<HabitPage/>} />
       </Routes>
-    </div>
+    </BrowserRouter>
   );
 }
 
