@@ -33,7 +33,7 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
   >
     <div className="bg-white w-full max-w-md p-6 rounded-lg">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold mb-4">Edit Habit</h2>
+        <h2 className="text-2xl font-bold mb-4">Set a daily Habit</h2>
         <button className="text-gray-600 hover:text-gray-800" onClick={onRequestClose}>
           X
         </button>
@@ -60,7 +60,7 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
           />
         </div>
 
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-sm font-semibold mb-1">Frequency Unit:</label>
           <select
             name="frequency_unit"
@@ -72,7 +72,7 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
           </select>
-        </div>
+        </div> */}
 
         <div className="mb-4">
           <label className="block text-sm font-semibold mb-1">Frequency Amount:</label>
@@ -85,13 +85,43 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
           />
         </div>
 
-        <button
-          type="button"
-          className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"
-          onClick={handleUpdateHabit}
-        >
-          Update
-        </button>
+        {/* Repeat option field */}
+        {/* <div className="mb-4">
+            <label className="block text-sm font-semibold mb-1">Repeat Option:</label>
+            <select
+              name="repeat_option"
+              value={editedHabit.repeat_option || 'daily'} // default to daily if not set
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border rounded-md"
+            >
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div> */}
+
+          {/* Conditionally render custom repeat input */}
+          {/* {editedHabit.repeat_option === 'custom' && (
+            <div className="mb-4">
+              <label className="block text-sm font-semibold mb-1">Custom Repeat:</label>
+              <input
+                type="text"
+                name="custom_repeat"
+                value={editedHabit.custom_repeat || ''}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border rounded-md"
+              />
+            </div>
+          )} */}
+
+          <button
+            type="button"
+            className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"
+            onClick={handleUpdateHabit}
+          >
+            Update
+          </button>
 
         <button
           type="button"

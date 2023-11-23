@@ -16,7 +16,7 @@ const LandingPage = () => {
         <button className='btn-pink'>Sign up</button>
       </Link>
       <p>Already part of the crew?</p>
-      <Link to="/loginin">
+      <Link to="/login">
         <button className='btn-purple'>Sign in</button>
       </Link>
     </section>

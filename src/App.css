@@ -85,17 +85,17 @@ background-color: #f2e1ff;
 }
 
 .circle {
-  width: 12px;
+  width: 18px;
   height: 12px;
   border-radius: 50%;
-  margin-right: 4px; /* Adjust as needed for spacing between circles */
+  margin-right: 4px; /* Adjust spacing between circles */
   cursor: pointer;
 }
 
 .completed-circle {
-  background-color: green; /* Change to your desired completed circle color */
+  background-color: green; 
 }
 
 .incomplete-circle {
-  background-color: red; /* Change to your desired incomplete circle color */
+  background-color: red; 
 }

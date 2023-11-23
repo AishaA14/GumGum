@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import AddGoalModal from '../AddGoalModal/AddGoalModal';
 import axios from 'axios';
@@ -8,7 +7,6 @@ export default function GoalsPage() {
   const [goals, setGoals] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  // const { id } = useParams();
 
   const fetchGoals = async (goalId) => {
     try {
@@ -116,8 +114,8 @@ const handleMarkAsCompleted = async (goalId) => {
   return (
     <div>
       <h1>Your goals Page</h1>
-      <button className="btn" onClick={handleOpenModal}>
-        Add Goal
+      <button className="bg-pink btn-pink" onClick={handleOpenModal}>
+        Add a Goal?
       </button>
 
       <AddGoalModal
@@ -127,15 +125,16 @@ const handleMarkAsCompleted = async (goalId) => {
       />
       <div>
       <ul>
-        {goals.map((goal) => (
+      {goals.filter((goal) => !goal.completed) // Filter out completed goals
+          .map((goal) => (
           <li key={goal.id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <p className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Name: {goal.name}</p>
             <p>Timeframe: {goal.timeframe}</p>
             {expandedGoals.includes(goal.id) && (
                 <>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Description: {goal.description}</p>
-                  {/* <p>Start Date: {new Date(goal.start_date).toLocaleDateString()}</p>
-                  <p>End Date: {new Date(goal.end_date).toLocaleDateString()}</p> */}
+                  <p>Start Date: {new Date(goal.start_date).toLocaleDateString()}</p>
+                  <p>End Date: {new Date(goal.end_date).toLocaleDateString()}</p>
                   <button className='bg-blue1 btn-teal'>
                     <Link to={`/edit_goal/${goal.id}`}>Edit Goal</Link>
                   </button>
