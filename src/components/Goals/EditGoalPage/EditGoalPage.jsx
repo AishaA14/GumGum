@@ -15,6 +15,7 @@ export default function EditGoalPage() {
   });
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
     // Fetch the goal details based on the ID
     console.log('Goal ID:', id);
     axios.get(`${backendUrl}/goal/${id}`, {

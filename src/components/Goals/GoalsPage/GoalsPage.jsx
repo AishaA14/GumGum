@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import AddGoalModal from '../AddGoalModal/AddGoalModal';
 import axios from 'axios';
@@ -8,7 +8,7 @@ export default function GoalsPage() {
   const [goals, setGoals] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  const { id } = useParams();
+  // const { id } = useParams();
 
   const fetchGoals = async (goalId) => {
     try {
@@ -100,14 +100,14 @@ const handleMarkAsCompleted = async (goalId) => {
           }
         );
 
-        if (!response.ok) {
+        if (response.status !== 200) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         // If the goal is successfully marked as completed, fetch the updated list of goals
         fetchGoals();
       } catch (error) {
-        console.error('Error marking goal as completed:', error);
+        console.error('Error marking goal as completed:', error.message);
         // Handle error (e.g., show an alert to the user)
       }
     }
@@ -136,16 +136,16 @@ const handleMarkAsCompleted = async (goalId) => {
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Description: {goal.description}</p>
                   {/* <p>Start Date: {new Date(goal.start_date).toLocaleDateString()}</p>
                   <p>End Date: {new Date(goal.end_date).toLocaleDateString()}</p> */}
-                  <button className='btn'>
-                    <Link to={`/edit_goal/${goal.id}`}>Edit</Link>
+                  <button className='bg-blue1 btn-teal'>
+                    <Link to={`/edit_goal/${goal.id}`}>Edit Goal</Link>
                   </button>
                   {/* View Habit Button */}
-                  <button className='btn mx-2'>
+                  <button className='bg-blue2 btn-cyan'>
                     <Link to={`/habits/${goal.id}`}>View Habit</Link>
                   </button>
 
                   {/* Mark as Completed Button */}
-                  <button className='btn mx-2' onClick={() => handleMarkAsCompleted(goal.id)}>
+                  <button className='bg-purple btn-purple' onClick={() => handleMarkAsCompleted(goal.id)}>
                     Mark as Completed
                  </button>
                 </>

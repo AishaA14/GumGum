@@ -26,6 +26,7 @@ export default function SignupPage() {
 
       // Handle successful signup (e.g., show a success message or redirect)
       console.log("Signup successful:", response.data);
+      window.location.href = "/about";
     } catch (error) {
       // Handle signup error (e.g., display an error message)
       console.error("Signup error:", error);

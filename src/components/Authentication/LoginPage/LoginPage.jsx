@@ -28,7 +28,7 @@ export default function LoginPage() {
     localStorage.setItem("access_token", data.access);
     localStorage.setItem("refresh_token", data.refresh);
     axios.defaults.headers.common["Authorization"] = `Bearer ${data["access"]}`;
-    window.location.href = "/";
+    window.location.href = "/dashboard";
   };
   return (
     <div className="max-w-sm mx-auto">
@@ -70,7 +70,6 @@ export default function LoginPage() {
               type="checkbox"
               value=""
               className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-              required
             />
           </div>
           <label htmlFor="remember" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -78,7 +77,7 @@ export default function LoginPage() {
           </label>
         </div>
         <div className="d-grid gap-2 mt-3">
-          <button type="submit" className="btn-pink">
+          <button type="submit" className="bg-pink btn-pink">
             Submit
           </button>
         </div>
