@@ -5,10 +5,10 @@ const AddHabitModal = ({ isOpen, onRequestClose, onAddHabit }) => {
   const [newHabit, setNewHabit] = useState({
     name: '',
     description: '',
-    frequency_unit: 'daily',
-    frequency_amount: 1,
-    repeat_option: 'daily', // default to daily
-    custom_repeat: '', // additional field for custom repeat
+    // frequency_unit: 'daily',
+    // frequency_amount: 1,
+    // repeat_option: 'daily', // default to daily
+    // custom_repeat: '', // additional field for custom repeat
   });
 
   const handleChange = (e) => {
@@ -21,8 +21,8 @@ const AddHabitModal = ({ isOpen, onRequestClose, onAddHabit }) => {
 
   const handleAddHabit = () => {
     // Validate the new habit before adding
-    if (newHabit.name.trim() === '' || newHabit.frequency_amount <= 0) {
-      alert('Name and Frequency Amount are required fields.');
+    if (newHabit.name.trim() === '') {
+      alert('Name is a required field.');
       return;
     }
 
@@ -66,7 +66,7 @@ const AddHabitModal = ({ isOpen, onRequestClose, onAddHabit }) => {
             />
           </div>
 
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label className="block text-sm font-semibold mb-1">Frequency Unit:</label>
             <select
               name="frequency_unit"
@@ -78,9 +78,9 @@ const AddHabitModal = ({ isOpen, onRequestClose, onAddHabit }) => {
               <option value="weekly">Weekly</option>
               <option value="monthly">Monthly</option>
             </select>
-          </div>
+          </div> */}
 
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label className="block text-sm font-semibold mb-1">Frequency Amount:</label>
             <input
               type="number"
@@ -89,16 +89,9 @@ const AddHabitModal = ({ isOpen, onRequestClose, onAddHabit }) => {
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-md"
             />
-          </div>
-
-          <button
-            type="button"
-            className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"
-            onClick={handleAddHabit}
-          >
-            Add Habit
-          </button>
-          <div className="mb-4">
+          </div> */}
+          
+          {/* <div className="mb-4">
             <label className="block text-sm font-semibold mb-1">Repeat Option:</label>
             <select
               name="repeat_option"
@@ -111,10 +104,10 @@ const AddHabitModal = ({ isOpen, onRequestClose, onAddHabit }) => {
               <option value="monthly">Monthly</option>
               <option value="custom">Custom</option>
             </select>
-          </div>
+          </div> */}
 
           {/* Conditionally render custom repeat input */}
-          {newHabit.repeat_option === 'custom' && (
+          {/* {newHabit.repeat_option === 'custom' && (
             <div className="mb-4">
               <label className="block text-sm font-semibold mb-1">Custom Repeat:</label>
               <input
@@ -125,7 +118,7 @@ const AddHabitModal = ({ isOpen, onRequestClose, onAddHabit }) => {
                 className="w-full px-4 py-2 border rounded-md"
               />
             </div>
-          )}
+          )} */}
 
           <button
             type="button"

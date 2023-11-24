@@ -10,8 +10,8 @@ export default function EditGoalPage() {
   const [goal, setGoal] = useState({
     name: '',
     description: '',
-    timeframe: '',
-    // other fields 
+    goal_duration: ''
+    // timeframe: '', 
   });
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
@@ -66,47 +66,64 @@ export default function EditGoalPage() {
     })
       .then(response => {
         console.log('Goal deleted successfully:', response.data);
-        navigate('/'); // Navigate to the home page or any other page
+        navigate('/goals'); // Navigate to goals page
       })
       .catch(error => {
         console.error('Error deleting goal:', error);
       });
   };
 
-
   return (
     <div>
-      <h1>Edit:{goal.name}</h1>
-      <form>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={goal.name}
-          onChange={handleChange}
-        />
+      <h1>Edit: {goal.name}</h1>
+      <form className="bg-white w-full max-w-md p-6 rounded-lg">
+        <div className="mb-4">
+          <label className="block text-sm font-semibold mb-1">Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={goal.name}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md"
+          />
+        </div>
 
-        <label>Description:</label>
-        <textarea
-          name="description"
-          value={goal.description}
-          onChange={handleChange}
-        />
+        <div className="mb-4">
+          <label className="block text-sm font-semibold mb-1">Description:</label>
+          <textarea
+            name="description"
+            value={goal.description}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md"
+          />
+        </div>
 
-        {/* Add other fields */}
+        <div className="mb-4">
+          <label className="block text-sm font-semibold mb-1">Goal Duration:</label>
+          <select
+            name="goal_duration"
+            value={goal.goal_duration}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md"
+          >
+            <option value="continuous">Continuous</option>
+            <option value="onetime">One Time</option>
+          </select>
+        </div>
 
-        <label>Timeframe:</label>
-        <input
-          type="text"
-          name="timeframe"
-          value={goal.timeframe}
-          onChange={handleChange}
-        />
-
-        <button type="button" className="btn" onClick={handleUpdate}>
+        <button
+          type="button"
+          className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"
+          onClick={handleUpdate}
+        >
           Update Goal
         </button>
-        <button type="button" onClick={handleDelete}>
+
+        <button
+          type="button"
+          className="btn w-full bg-red-500 text-white px-4 py-2 mt-2 rounded-md"
+          onClick={handleDelete}
+        >
           Delete Goal
         </button>
       </form>

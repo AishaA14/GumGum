@@ -5,9 +5,10 @@ const AddGoalModal = ({ isOpen, onRequestClose, onAddGoal }) => {
   const [newGoal, setNewGoal] = useState({
     name: '',
     description: '',
-    timeframe: '',
-    start_date: '',
-    end_date: '',
+    // timeframe: '',
+    // start_date: '',
+    // end_date: '',
+    goal_duration: ''
   });
 
   const handleChange = (e) => {
@@ -20,8 +21,8 @@ const AddGoalModal = ({ isOpen, onRequestClose, onAddGoal }) => {
 
   const handleAddGoal = () => {
     // Validate the new goal before adding
-    if (newGoal.name.trim() === '' || newGoal.timeframe.trim() === '') {
-      alert('Name and Timeframe are required fields.');
+    if (newGoal.name.trim() === '' ) {
+      alert('Name and Goal duration are required fields.');
       return;
     }
 
@@ -43,7 +44,6 @@ const AddGoalModal = ({ isOpen, onRequestClose, onAddGoal }) => {
         className="text-gray-600 hover:text-gray-800"
             onClick={onRequestClose}
           >
-            {/* You can use an SVG or any other close icon here */}
             X
         </button>
         </div>
@@ -70,6 +70,20 @@ const AddGoalModal = ({ isOpen, onRequestClose, onAddGoal }) => {
           </div>
 
           <div className="mb-4">
+            <label className="block text-sm font-semibold mb-1">Goal Duration:</label>
+            <select
+              name="goal_duration"
+              value={newGoal.goal_duration}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md"
+            >
+              <option value="">Select an option</option>
+              <option value="One Time">One Time</option>
+              <option value="Continuous">Continuous</option>
+            </select>
+          </div>
+
+          {/* <div className="mb-4">
             <label className="block text-sm font-semibold mb-1">Timeframe:</label>
             <input
               type="text"
@@ -100,11 +114,11 @@ const AddGoalModal = ({ isOpen, onRequestClose, onAddGoal }) => {
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-md"
             />
-          </div>
+          </div> */}
 
           <button
             type="button"
-            className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"
+            className="btn-pink bg-pink"
             onClick={handleAddGoal}
           >
             Add Goal

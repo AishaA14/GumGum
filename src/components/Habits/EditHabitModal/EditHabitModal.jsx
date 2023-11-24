@@ -74,7 +74,7 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
           </select>
         </div> */}
 
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-sm font-semibold mb-1">Frequency Amount:</label>
           <input
             type="number"
@@ -83,7 +83,7 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
             onChange={handleInputChange}
             className="w-full px-4 py-2 border rounded-md"
           />
-        </div>
+        </div> */}
 
         {/* Repeat option field */}
         {/* <div className="mb-4">
@@ -114,6 +114,8 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
               />
             </div>
           )} */}
+
+          
 
           <button
             type="button"

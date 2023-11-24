@@ -77,27 +77,42 @@ export default function EditTaskPage() {
 
   return (
     <div>
-      <h1>Edit:{task.title}</h1>
-      <form>
-        <label>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={task.title}
-          onChange={handleChange}
-        />
+      <h1 className="text-3xl font-bold mb-6">Edit: {task.title}</h1>
+      <form className="bg-white w-full max-w-md p-6 rounded-lg">
+        <div className="mb-4">
+          <label className="block text-sm font-semibold mb-1">Title:</label>
+          <input
+            type="text"
+            name="title"
+            value={task.title}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md"
+          />
+        </div>
 
-        <label>Description:</label>
-        <textarea
-          name="description"
-          value={task.description}
-          onChange={handleChange}
-        />
+        <div className="mb-4">
+          <label className="block text-sm font-semibold mb-1">Description:</label>
+          <textarea
+            name="description"
+            value={task.description}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md"
+          />
+        </div>
 
-        <button type="button" className="btn" onClick={handleUpdate}>
+        <button
+          type="button"
+          className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"
+          onClick={handleUpdate}
+        >
           Update Task
         </button>
-        <button type="button" className="btn" onClick={handleDelete}>
+
+        <button
+          type="button"
+          className="btn w-full bg-red-500 text-white px-4 py-2 mt-2 rounded-md"
+          onClick={handleDelete}
+        >
           Delete Task
         </button>
       </form>
