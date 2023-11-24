@@ -36,8 +36,8 @@ export default function AboutPage() {
         <div className="max-w-2xl p-6 bg-white shadow-md rounded-md text-gray-800">
         <p className="text-gray-600 mt-8">
           Ready to embark on your micro habit journey?{' '}
-          <a href="/goals" className="text-cc90ff hover:underline">
-            <span className='text-blue1'>Add a goal to begin</span>
+          <a href="/login" className="text-cc90ff hover:underline">
+            <span className='text-blue1'>Login to begin</span>
           </a>{' '}
           today and transform your dreams into daily triumphs.
         </p>
