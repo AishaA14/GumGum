@@ -80,33 +80,6 @@ const handleAddGoal = async (newGoal) => {
     // Handle error (e.g., show an alert to the user)
   }
 };
-const handleDeleteGoal = async (goalId) => {
-  const confirmDelete = window.confirm('Are you sure you want to delete this goal?');
-
-  if (confirmDelete) {
-    try {
-      // Make a DELETE request to delete the goal
-      const response = await axios.delete(
-        `${backendUrl}/goal/${goalId}/`,
-        {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-
-      if (response.status !== 204) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      // If the goal is successfully deleted, fetch the updated list of goals
-      window.location.reload();
-    } catch (error) {
-      console.error('Error deleting goal:', error.message);
-      // Handle error (e.g., show an alert to the user)
-    }
-  }
 
 const handleMarkAsCompleted = async (goalId) => {
     const confirmMarkCompleted = window.confirm('Are you sure you want to mark this goal as completed?');
@@ -172,9 +145,6 @@ const handleMarkAsCompleted = async (goalId) => {
                     <button className='bg-blue1 btn-teal'>
                       <Link to={`/edit_goal/${goal.id}`}>Edit Goal</Link>
                     </button>
-                    <button className="bg-pink btn-pink" onClick={() => handleDeleteGoal(goal.id)}>
-                  Delete Goal
-                </button>
                     <button
                   className="btn-purple"
                   onClick={() => handleMarkAsCompleted(goal.id)}
