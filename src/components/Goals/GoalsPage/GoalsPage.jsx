@@ -12,7 +12,7 @@ export default function GoalsPage() {
   useEffect(()  => {
         async function fetchGoals() {
       try {
-        const response = await fetch(`${backendUrl}/goal`, {
+          const response = await fetch(`${backendUrl}/goal?user=${userId}`, {
           method: 'GET',
           headers: new Headers({ 
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`,

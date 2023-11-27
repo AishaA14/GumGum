@@ -68,7 +68,7 @@ const AddTaskModal = ({ isOpen, onRequestClose, onAddTask }) => {
 
           <button
             type="button"
-            className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"
+            className="btn-pink bg-pink"
             onClick={handleAddTask}
           >
             Add Task
