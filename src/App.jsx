@@ -12,8 +12,6 @@ import EditGoalPage from './components/Goals/EditGoalPage/EditGoalPage';
 import HabitPage from './components/Habits/HabitPage/HabitPage';
 import TaskPage from './components/Tasks/TaskPage/TaskPage'
 import EditTaskPage from './components/Tasks/EditTaskPage/EditTaskPage';
-import HabitChart from './components/HabitChart/HabitChart';
-// import NewPage from './components/NewPage/NewPage';
 
 function App() {
   return (
@@ -31,8 +29,6 @@ function App() {
         <Route path="/habits/:goalId" element={<HabitPage/>} />
         <Route path="/tasks" element={<TaskPage/>} />
         <Route path="/edit_task/:id" element={<EditTaskPage />} />
-        <Route path="/chart" element={<HabitChart />} />
-        {/* <Route path="/new" element={<NewPage />} /> */}
       </Routes>
     </BrowserRouter>
   );
