@@ -66,7 +66,7 @@ export default function EditTaskPage() {
     })
       .then(response => {
         console.log('Task deleted successfully:', response.data);
-        navigate('/'); // Navigate to the home page or any other page
+        navigate('/tasks'); 
       })
       .catch(error => {
         console.error('Error deleting task:', error);
