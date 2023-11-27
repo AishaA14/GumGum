@@ -8,8 +8,6 @@ export default function TasksPage() {
   const [tasks, setTasks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
-//   const { id } = useParams();
-
 
 useEffect(() => {
       const fetchTasks = async (taskId) => {
@@ -108,7 +106,6 @@ const handleMarkAsCompleted = async (taskId) => {
         window.location.reload();
       } catch (error) {
         console.error('Error marking task as completed:', error);
-        // Handle error (e.g., show an alert to the user)
       }
     }
   };

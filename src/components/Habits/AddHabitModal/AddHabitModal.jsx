@@ -5,10 +5,6 @@ const AddHabitModal = ({ isOpen, onRequestClose, onAddHabit }) => {
   const [newHabit, setNewHabit] = useState({
     name: '',
     description: '',
-    // frequency_unit: 'daily',
-    // frequency_amount: 1,
-    // repeat_option: 'daily', // default to daily
-    // custom_repeat: '', // additional field for custom repeat
   });
 
   const handleChange = (e) => {
@@ -65,61 +61,6 @@ const AddHabitModal = ({ isOpen, onRequestClose, onAddHabit }) => {
               className="w-full px-4 py-2 border rounded-md"
             />
           </div>
-
-          {/* <div className="mb-4">
-            <label className="block text-sm font-semibold mb-1">Frequency Unit:</label>
-            <select
-              name="frequency_unit"
-              value={newHabit.frequency_unit}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md"
-            >
-              <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
-              <option value="monthly">Monthly</option>
-            </select>
-          </div> */}
-
-          {/* <div className="mb-4">
-            <label className="block text-sm font-semibold mb-1">Frequency Amount:</label>
-            <input
-              type="number"
-              name="frequency_amount"
-              value={newHabit.frequency_amount}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md"
-            />
-          </div> */}
-          
-          {/* <div className="mb-4">
-            <label className="block text-sm font-semibold mb-1">Repeat Option:</label>
-            <select
-              name="repeat_option"
-              value={newHabit.repeat_option}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md"
-            >
-              <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
-              <option value="monthly">Monthly</option>
-              <option value="custom">Custom</option>
-            </select>
-          </div> */}
-
-          {/* Conditionally render custom repeat input */}
-          {/* {newHabit.repeat_option === 'custom' && (
-            <div className="mb-4">
-              <label className="block text-sm font-semibold mb-1">Custom Repeat:</label>
-              <input
-                type="text"
-                name="custom_repeat"
-                value={newHabit.custom_repeat}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
-              />
-            </div>
-          )} */}
-
           <button
             type="button"
             className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"

@@ -59,64 +59,6 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
             className="w-full px-4 py-2 border rounded-md"
           />
         </div>
-
-        {/* <div className="mb-4">
-          <label className="block text-sm font-semibold mb-1">Frequency Unit:</label>
-          <select
-            name="frequency_unit"
-            value={editedHabit.frequency_unit}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border rounded-md"
-          >
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
-          </select>
-        </div> */}
-
-        {/* <div className="mb-4">
-          <label className="block text-sm font-semibold mb-1">Frequency Amount:</label>
-          <input
-            type="number"
-            name="frequency_amount"
-            value={editedHabit.frequency_amount}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border rounded-md"
-          />
-        </div> */}
-
-        {/* Repeat option field */}
-        {/* <div className="mb-4">
-            <label className="block text-sm font-semibold mb-1">Repeat Option:</label>
-            <select
-              name="repeat_option"
-              value={editedHabit.repeat_option || 'daily'} // default to daily if not set
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border rounded-md"
-            >
-              <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
-              <option value="monthly">Monthly</option>
-              <option value="custom">Custom</option>
-            </select>
-          </div> */}
-
-          {/* Conditionally render custom repeat input */}
-          {/* {editedHabit.repeat_option === 'custom' && (
-            <div className="mb-4">
-              <label className="block text-sm font-semibold mb-1">Custom Repeat:</label>
-              <input
-                type="text"
-                name="custom_repeat"
-                value={editedHabit.custom_repeat || ''}
-                onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-md"
-              />
-            </div>
-          )} */}
-
-          
-
           <button
             type="button"
             className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"

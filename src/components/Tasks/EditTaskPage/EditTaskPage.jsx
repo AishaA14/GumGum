@@ -102,7 +102,7 @@ export default function EditTaskPage() {
 
         <button
           type="button"
-          className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"
+          className="btn-pink bg-pink"
           onClick={handleUpdate}
         >
           Update Task
@@ -110,7 +110,7 @@ export default function EditTaskPage() {
 
         <button
           type="button"
-          className="btn w-full bg-red-500 text-white px-4 py-2 mt-2 rounded-md"
+          className="btn-cyan bg-blue1"
           onClick={handleDelete}
         >
           Delete Task

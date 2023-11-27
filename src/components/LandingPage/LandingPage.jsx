@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaSignInAlt } from 'react-icons/fa'; // Import the desired React icons
+import { FaArrowRight, FaSignInAlt } from 'react-icons/fa'; 
 
 const LandingPage = () => {
   return (
@@ -26,35 +26,4 @@ const LandingPage = () => {
     </section>
   );
 };
-
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { FaArrowRight, FaSignInAlt } from 'react-icons/fa'; // Import the desired React icons
-
-// const LandingPage = () => {
-//   return (
-//     <section className="bg-cyan text-dark-gray h-screen flex flex-col justify-center items-center">
-//       <h2 className="text-4xl font-bold mb-4">Stretch your limits. Stick to your goals</h2>
-//       <p className="mb-4">Gum Gum empowers you to seize control</p>
-//       <p className="mb-4">Transform your dreams into reality</p>
-//       <p className="mb-4">Set ambitious goals</p>
-//       <p className="mb-4">Cultivate powerful habits</p>
-//       <p className="mb-4">Stay organized with daily tasks</p>
-//       <p className="mb-8">No more drifting, It's time to navigate with purpose</p>
-//       <p className="text-lg mb-8">Ready to embark on your journey? Set sail with GumGum.</p>
-//       <Link to="/signup">
-//         <button className="bg-pink text-white py-2 px-6 rounded-full transition duration-300 hover:bg-purple">
-//           Sign up <FaArrowRight className="inline ml-2" />
-//         </button>
-//       </Link>
-//       <p className="mt-4 text-gray-300">Already part of the crew?</p>
-//       <Link to="/login">
-//         <button className="bg-purple text-white py-2 px-6 rounded-full transition duration-300 hover:bg-pink">
-//           Sign in <FaSignInAlt className="inline ml-2" />
-//         </button>
-//       </Link>
-//     </section>
-//   );
-// };
-
 export default LandingPage;

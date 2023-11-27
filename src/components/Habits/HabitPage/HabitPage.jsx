@@ -63,7 +63,7 @@ async function HabitChart(id, setChartData) {
         }
   
         const reponseData = await response.json();
-        console.log('API Response:', reponseData); // Log the entire API response
+        console.log('API Response:', reponseData); 
 
     const completedHabits = reponseData.map((item)=> {
       return new Date(item.completed_at).toLocaleDateString();
@@ -100,10 +100,7 @@ const HabitPage = () => {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedHabit, setSelectedHabit] = useState(null); // Track the habit being edited
   const [completedHabits, setCompletedHabits] = useState({});
-  
   const [chartData, setChartData] = useState(undefined);
-  // const [completedFrequencies, setCompletedFrequencies] = useState({}); // Track completed frequencies
-
   const { goalId } = useParams();
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -122,13 +119,6 @@ const HabitPage = () => {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        // Initialize completed frequencies for each habit
-        // const initialCompletedFrequencies = {};
-        // response.data.forEach((habit) => {
-        //   initialCompletedFrequencies[habit.id] = 0;
-        // });
-
-        // setCompletedFrequencies(initialCompletedFrequencies);
         setHabits(response.data);
       } catch (error) {
         console.error('Error fetching habits:', error);
@@ -163,10 +153,6 @@ const HabitPage = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // setCompletedFrequencies((prevCompletedFrequencies) => ({
-      //   ...prevCompletedFrequencies,
-      //   [response.data.id]: 0,
-      // }));
     } catch (error) {
       console.error('Error adding habit:', error);
     }
@@ -192,16 +178,7 @@ const HabitPage = () => {
 
       if (response.status === 200) {
         console.log('habit added successfully')
-        // setHabits((prevHabits) =>
-        //   prevHabits.map((habit) =>
-        //     habit.id === updatedHabit.id ? { ...habit, ...updatedHabit } : habit
-        //   )
-        // );
-
-        // setCompletedFrequencies((prevCompletedFrequencies) => ({
-        //   ...prevCompletedFrequencies,
-        //   [updatedHabit.id]: 0,
-        // }));
+     
       } else {
         console.error('Failed to update habit:', response);
       }
@@ -259,64 +236,6 @@ const HabitPage = () => {
       console.error('Error marking habit as completed:', error);
     }
   };
-  
-  
-  
-  // const handleCompleteFrequency = async (habitId) => {
-  //   try {
-  //     const updatedHabits = await Promise.all(
-  //       habits.map(async (habit) => {
-  //         if (habit.id === habitId) {
-  //           const completedFrequency = completedFrequencies[habitId] + 1;
-  
-  //           if (completedFrequency >= habit.frequency_amount) {
-  //             try {
-  //               // Check the repeat_option and reset is_completed accordingly
-  //               if (habit.repeat_option === 'daily' || habit.repeat_option === 'weekly' || habit.repeat_option === 'monthly') {
-  //                 await axios.patch(
-  //                   `${backendUrl}/habits/${habitId}/`,
-  //                   { is_completed: false },  // Reset is_completed to false
-  //                   {
-  //                     headers: {
-  //                       'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
-  //                       'Content-Type': 'application/json',
-  //                     },
-  //                   }
-  //                 );
-  
-  //                 setCompletedFrequencies((prevCompletedFrequencies) => ({
-  //                   ...prevCompletedFrequencies,
-  //                   [habitId]: 0,  // Reset completed frequency
-  //                 }));
-  
-  //                 return { ...habit, is_completed: false };
-  //               } else {
-  //                 // Handle custom repeat logic if needed
-  //               }
-  //             } catch (error) {
-  //               console.error('Error completing frequency:', error);
-  //               return habit;
-  //             }
-  //           } else {
-  //             setCompletedFrequencies((prevCompletedFrequencies) => ({
-  //               ...prevCompletedFrequencies,
-  //               [habitId]: completedFrequency,
-  //             }));
-  //             return habit;
-  //           }
-  //         } else {
-  //           return habit;
-  //         }
-  //       })
-  //     );
-  
-  //     setHabits(updatedHabits);
-  //   } catch (error) {
-  //     console.error('Error completing frequency:', error);
-  //   }
-  // };
-  
-  
 
   return (
     <div>
@@ -334,24 +253,7 @@ const HabitPage = () => {
                   {habit.name}
                 </h2>
                 <p className="font-normal text-gray-700 dark:text-gray-400">{habit.description}</p>
-                
-                {/* <p className="font-normal text-gray-700 dark:text-gray-400">
-                  Frequency: {habit.frequency_amount} {habit.frequency_unit}
-                </p> */}
-                {/* <div className="mb-2 text-base font-medium text-purple-700 dark:text-purple-500">
-                  Progress
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                  <div
-                    className="bg-purple-600 h-2.5 rounded-full dark:bg-purple-500"
-                    style={{ width: `${(completedFrequencies[habit.id] / habit.frequency_amount) * 100}%` }}
-                  ></div>
-                </div>
-                {completedFrequencies[habit.id] === habit.frequency_amount && (
-                  <p className="mt-2 text-green-500 dark:text-green-400">
-                    Well done! Frequency completed.
-                  </p>
-                )} */}
+               
                 <button
                   className="btn-purple"
                   onClick={() => handleMarkAsCompleted(habit.id)}
@@ -376,12 +278,6 @@ const HabitPage = () => {
                 >
                   Show progress Chart
                 </button>
-                {/* <button
-                  className="btn-purple"
-                  onClick={() => handleCompleteFrequency(habit.id)}
-                  >
-                  Complete Frequency
-                </button> */}
               </div>
             </div>
           ))}
