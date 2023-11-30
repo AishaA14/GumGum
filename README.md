@@ -33,7 +33,7 @@ To run GumGum locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/gumgum.git
+   git clone https://github.com/aishaa14/gumgum.git
 Navigate to the project directory:
 bash
 Copy code
