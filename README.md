@@ -33,7 +33,7 @@ To run GumGum locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/aishaa14/gumgum.git
+   git clone git@github.com:AishaA14/Project4-frontend.git
 Navigate to the project directory:
 bash
 Copy code
@@ -70,30 +70,26 @@ The project's brief was to create a productivity app using Django and React, wit
 Planning Stages
 The planning stages involved initial sketches and diagrams to visualize the app's structure and features. QuickDatabaseDiagrams.com was utilized to create entity-relationship diagrams for the database structure.
 
+
 Build and Code Process
 The build and code process followed an iterative approach, focusing on implementing core features first and gradually adding additional functionalities. Both frontend and backend development were carried out concurrently.
 
+
+
 Challenges and Wins
 
-The development process presented several challenges, including [list some challenges here]. However, notable wins include [mention key achievements].
+The development process presented several challenges, including the authentication of the users and mapping relationships between tables in the database.
 
-javascript
-Copy code
-// Example code snippet
+However, notable wins include .
 
 
-Throughout the project, key learning takeaways included [mention specific lessons learned], improving skills in [highlight specific areas of improvement].
 
-javascript
-Copy code
+Throughout the project, key learning takeaways included ..., improving skills in ...
 
 Future Improvements
 
-The app is continually evolving, and future improvements are planned to enhance user experience and functionality. Some planned improvements include [list future improvements].
+The app is continually evolving, and future improvements are planned to enhance user experience and functionality. Some planned improvements include ...
 
-javascript
-Copy code
-// Example code snippet
 
 Known Bugs
 
