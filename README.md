@@ -62,13 +62,13 @@ Deployment:
 Railway
 Project Overview
 
-Solo Project Timeline
+## Solo Project Timeline
 GumGum was developed within a one-week timeframe as a solo project. The tight schedule was aimed at challenging the efficiency and productivity of the development process.
 
-Brief
+## Brief
 The project's brief was to create a productivity app using Django and React, with specific requirements including full-CRUD operations, PostgreSQL database usage, third-party API integration, authentication, and authorization.
 
-Planning Stages
+## Planning Stages
 The planning stages involved initial sketches and diagrams to visualize the app's structure and features. QuickDatabaseDiagrams.com was utilized to create entity-relationship diagrams for the database structure.
 
 [ERD diagram](ERD.png)
@@ -78,12 +78,58 @@ Excalidraw was also used to create a wireframe of the flow of the application an
 [Excalidraw](Excalidraw.png)
 
 
-Build and Code Process
+## Build and Code Process
 The build and code process followed an iterative approach, focusing on implementing core features first and gradually adding additional functionalities. Both frontend and backend development were carried out concurrently.
 
+** One of the core features of the app to implement was user authenitcation. This was carried out by creating a react component in the front end that will consume an endpoint on the backend responsible for generating the users access token.
 
+Code snippet of the front end logic.
+```js
+ const { data } = await axios.post(`${backendUrl}/token/`, user,
+    {
+      headers: { "Content-Type": "application/json" },
+    },
+    {
+        withCredentials: true
+    },
+    );
 
-Challenges and Wins
+    // Initialize the access & refresh token in localstorage.
+    localStorage.clear();
+    localStorage.setItem("access_token", data.access);
+    localStorage.setItem("refresh_token", data.refresh);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${data["access"]}`;
+
+```
+
+another key feature of the app was the ability to visualise the completion of habits. The user is able to mark the habit as completed which then allows them to see a bar chart of the frequency of completion in the last 7 days.
+
+Here is som code showing the logic behind marking as completed.
+
+```js
+const handleMarkAsCompleted = async (habitId) => {
+    try {
+      // Check if the habitId is already in the completedHabits state
+      if (!completedHabits[habitId]) {
+        // If not completed, set the count to 1
+        setCompletedHabits((prevCompletedHabits) => ({
+          ...prevCompletedHabits,
+          [habitId]: {
+            count: 1,
+          },
+        }));
+  
+        // Save the completion in your backend (call API endpoint to save completion)
+        await axios.post(
+          `${backendUrl}/completed_habits/`,
+          {
+            habit: habitId,
+            count: 1, // Initial count for a new completion
+            // include completion date
+          },
+```
+
+## Challenges and Wins
 
 The development process presented several challenges, including the authentication of the users and mapping relationships between tables in the database.
 
@@ -93,12 +139,12 @@ However, notable wins include .
 
 Throughout the project, key learning takeaways included ..., improving skills in ...
 
-Future Improvements
+## Future Improvements
 
 The app is continually evolving, and future improvements are planned to enhance user experience and functionality. Some planned improvements include ...
 
 
-Known Bugs
+## Known Bugs
 
 As of the current version, the following bugs are known and will be addressed in future updates:
 
