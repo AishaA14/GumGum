@@ -71,11 +71,11 @@ The project's brief was to create a productivity app using Django and React, wit
 Planning Stages
 The planning stages involved initial sketches and diagrams to visualize the app's structure and features. QuickDatabaseDiagrams.com was utilized to create entity-relationship diagrams for the database structure.
 
-[ERD.png]
+[ERD diagram](ERD.png)
 
 Excalidraw was also used to create a wireframe of the flow of the application and visualise the User Interface.
 
-[Excalidraw.png]
+[Excalidraw](Excalidraw.png)
 
 
 Build and Code Process
