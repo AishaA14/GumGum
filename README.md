@@ -20,8 +20,7 @@
 
 ## Introduction
 
-GumGum is a productivity app designed to help users achieve significant goals by breaking them down into manageable micro habits. Inspired by the principles of "Atomic Habits" by James Clear, GumGum provides a platform for users to transform their dreams into daily victories.
-
+GumGum is a productivity app designed to help users achieve significant goals by breaking them down into manageable micro habits. Inspired by the principles of "Atomic Habits" by James Clear, GumGum provides a platform for users to transform their dreams into daily victori
 ## Deployment
 
 The app is deployed and accessible online at [GumGum Deployment Link](#).
@@ -34,20 +33,22 @@ To run GumGum locally, follow these steps:
 
    ```bash
    git clone git@github.com:AishaA14/Project4-frontend.git
+   
 Navigate to the project directory:
-bash
-Copy code
+```bash
 cd gumgum
+```
 Install dependencies:
-bash
-Copy code
+```bash
 npm install
+```
 Start the development server:
-bash
-Copy code
+```bash
 npm start
+```
 The app will be available at http://localhost:3000 by default.
-Technologies Used
+
+## Technologies Used
 
 GumGum is built using the following technologies:
 
@@ -69,6 +70,12 @@ The project's brief was to create a productivity app using Django and React, wit
 
 Planning Stages
 The planning stages involved initial sketches and diagrams to visualize the app's structure and features. QuickDatabaseDiagrams.com was utilized to create entity-relationship diagrams for the database structure.
+
+[ERD.png]
+
+Excalidraw was also used to create a wireframe of the flow of the application and visualise the User Interface.
+
+[Excalidraw.png]
 
 
 Build and Code Process
@@ -95,4 +102,4 @@ Known Bugs
 
 As of the current version, the following bugs are known and will be addressed in future updates:
 
-[List known bugs and issues]
+
