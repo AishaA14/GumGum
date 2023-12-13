@@ -1,5 +1,7 @@
 # GumGum - Achieve Big Goals with Micro Habits
 
+![GumGum Dashboard](ggdashboard.png)
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
@@ -12,7 +14,7 @@
    - [Planning Stages](#planning-stages)
    - [Build and Code Process](#build-and-code-process)
 6. [Challenges and Wins](#challenges-and-wins)
-7. [Key Learning Takeaways](#key-learning-takeaways)
+7. [Key Learning/Takeaways](#key-learning/takeaways)
 8. [Future Improvements](#future-improvements)
 9. [Known Bugs](#known-bugs)
 
@@ -23,7 +25,7 @@
 GumGum is a productivity app designed to help users achieve significant goals by breaking them down into manageable micro habits. Inspired by the principles of "Atomic Habits" by James Clear, GumGum provides a platform for users to transform their dreams into daily victori
 ## Deployment
 
-The app is deployed and accessible online at [GumGum Deployment Link](#).
+The app is deployed and accessible online at [GumGum](https://project4-frontend-production-dadf.up.railway.app).
 
 ## Installation
 
@@ -71,11 +73,15 @@ The project's brief was to create a productivity app using Django and React, wit
 ## Planning Stages
 The planning stages involved initial sketches and diagrams to visualize the app's structure and features. QuickDatabaseDiagrams.com was utilized to create entity-relationship diagrams for the database structure.
 
-[ERD diagram](ERD.png)
+![ERD diagram](erdg.png)
 
 Excalidraw was also used to create a wireframe of the flow of the application and visualise the User Interface.
 
-[Excalidraw](Excalidraw.png)
+![Excalidraw](excalidrawg.png)
+
+I used a Trello Board to manage and prioritise tasks.
+
+![Trello](trellog.png)
 
 
 ## Build and Code Process
@@ -102,9 +108,9 @@ Code snippet of the front end logic.
 
 ```
 
-another key feature of the app was the ability to visualise the completion of habits. The user is able to mark the habit as completed which then allows them to see a bar chart of the frequency of completion in the last 7 days.
+Another key feature of the app was the ability to visualise the completion of habits. The user is able to mark the habit as completed which then allows them to see a bar chart of the frequency of completion in the last 7 days.
 
-Here is som code showing the logic behind marking as completed.
+Here is some code showing the logic behind marking as completed.
 
 ```js
 const handleMarkAsCompleted = async (habitId) => {
@@ -133,19 +139,23 @@ const handleMarkAsCompleted = async (habitId) => {
 
 The development process presented several challenges, including the authentication of the users and mapping relationships between tables in the database.
 
-However, notable wins include .
+However, notable wins include successfully using chart.js to implement habit visualisation, a clean and intuitive user interface, successfully setting goals and tasks.
 
+## Key Learnings/Takeaways
 
-
-Throughout the project, key learning takeaways included ..., improving skills in ...
+Completing this project improved my confidence in understanding and establishing relationships between data models and how they interact with one another.
+I became more proficient in Python and Django.
+By the end of this project, I also felt more confident using CSS libraries like Tailwind.
 
 ## Future Improvements
 
-The app is continually evolving, and future improvements are planned to enhance user experience and functionality. Some planned improvements include ...
+Allow the user to set multiple frequencies for goal or habit completion.
+Implement chatbot API to help user break down goals into habits.
+Include more comprehensive data visualisation of tasks, goals and habits.
 
 
 ## Known Bugs
 
-As of the current version, the following bugs are known and will be addressed in future updates:
+Currently, there is a bug in the fetching of data where all users can see goals set by the different users.
 
 
