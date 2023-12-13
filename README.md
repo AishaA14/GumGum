@@ -135,6 +135,70 @@ const handleMarkAsCompleted = async (habitId) => {
           },
 ```
 
+On the backend implementing the models, serializers, the api end point that the rect frontend will communicate with and the views responsible to CRUD functionality were crucial to the smooth functioning of the app.
+
+Below is are examples of backend code.
+
+API endpoints
+
+```python
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('token/', jwt_views.TokenObtainPairView.as_view(), name ='token_obtain_pair'),
+    path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name ='token_refresh'),
+    path('signup/', views.SignUpView.as_view(), name='signup'),
+    path('home/', views.HomeView.as_view(), name ='home'),
+    path('logout/', views.LogoutView.as_view(), name ='logout'),
+
+    path('goal/<int:pk>/', views.GoalViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='goal_detail'),
+    path('goal/create/', views.GoalCreate.as_view(), name='goal_create'),
+```
+An example of the Goal model.
+
+```python
+
+class Goal(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    goal_duration = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    completed = models.BooleanField(default=False)
+
+```
+The serializer for the goal model.
+
+```python
+class GoalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Goal
+        fields = '__all__'
+        read_only_fields = ['user']
+
+```
+The views responsible for CRUD functionality of the goals.
+
+```python
+class GoalViewSet(viewsets.ModelViewSet):
+    queryset = Goal.objects.all()
+    serializer_class = GoalSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class GoalCreate(generics.CreateAPIView):
+    queryset = Goal.objects.all()
+    serializer_class = GoalSerializer
+    def create(self, request, *args, **kwargs):
+        user_id = decode_token(request)  # Use the decode_token function
+        if user_id:
+            request.data['user'] = user_id  # Associate user ID with the goal
+            return super().create(request, *args, **kwargs)
+        else:
+            return Response({'detail': 'Invalid or missing token'}, status=status.HTTP_401_UNAUTHORIZED)
+
+```
+
 ## Challenges and Wins
 
 The development process presented several challenges, including the authentication of the users and mapping relationships between tables in the database.
