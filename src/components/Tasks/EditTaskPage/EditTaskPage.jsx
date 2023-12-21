@@ -48,6 +48,7 @@ export default function EditTaskPage() {
     })
       .then(response => {
         console.log('Task updated successfully:', response.data);
+        navigate('/tasks');
       })
       .catch(error => {
         console.error('Error updating task:', error);
@@ -119,4 +120,3 @@ export default function EditTaskPage() {
     </div>
   );
 };
-
