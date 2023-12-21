@@ -61,7 +61,7 @@ export default function Dashboard({user}) {
   return (
    
 <div className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+      <h1 className="text-center text-3xl font-bold mb-6">Dashboard</h1>
       {randomQuote && (
         <div className="mb-6">
           <p className="text-lg italic">"{randomQuote.text}"</p>
