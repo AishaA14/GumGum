@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import AddTaskModal from '../AddTaskModal/AddTaskModal';
 import axios from 'axios';
 
 export default function TasksPage() {
+  const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
@@ -53,62 +54,75 @@ useEffect(() => {
     setIsModalOpen(false);
   };
 
-const handleAddTask = async (newTask) => {
-  try {
-    // Make a POST request to create a new task
-    const response = await axios.post(
-      `${backendUrl}/task/create/`, newTask,
-      
-      {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    // If the task is successfully created, fetch the updated list of tasks
-    window.location.reload();
-
-    // onRequestClose();
-  } catch (error) {
-    console.error('Error adding task:', error);
-    // Handle error (e.g., show an alert to the user)
-  }
-};
-
-const handleMarkAsCompleted = async (taskId) => {
-    const confirmMarkCompleted = window.confirm('Are you sure you want to mark this task as completed?');
-
-    if (confirmMarkCompleted) {
-      try {
-        // Make a PATCH request to update the task's completed status
-        const response = await axios.patch(
-          `${backendUrl}/task/${taskId}/`, // Update the URL to include the task ID
-          { is_completed: true },
-          {
-            headers: {
-              'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+  const handleAddTask = async (newTask) => {
+    try {
+      // Make a POST request to create a new task
+      const response = await axios.post(
+        `${backendUrl}/task/create/`, 
+        newTask,
+        {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+            'Content-Type': 'application/json',
+          },
         }
-
-        // If the task is successfully marked as completed, fetch the updated list of tasks
-        window.location.reload();
-      } catch (error) {
-        console.error('Error marking task as completed:', error);
+      );
+  
+      // Check if the status code indicates success (2xx range)
+      if (response.status === 201) {
+        // Successful response, redirect or do whatever you need
+        navigate('/tasks');
+      } else {
+        // Handle unsuccessful response
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
+    } catch (error) {
+      console.error('Error adding task:', error);
+      // Handle error (e.g., show an alert to the user)
     }
   };
+  
+const handleMarkAsCompleted = async (taskId) => {
+  const confirmMarkCompleted = window.confirm('Are you sure you want to mark this task as completed?');
+
+  if (confirmMarkCompleted) {
+    try {
+      // Make a PATCH request to update the task's completed status
+      const response = await axios.patch(
+        `${backendUrl}/task/${taskId}/`,
+        { is_completed: !tasks.find(task => task.id === taskId)?.is_completed }, // Toggle the completion status
+        {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      // Check if the status code indicates success (2xx range)
+      if (response.status === 200) {
+        // Successful response, redirect or do whatever you need
+        navigate('/tasks');
+      } else {
+        // Handle unsuccessful response
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      
+      // If the task is successfully marked as completed, update the state
+      setTasks((prevTasks) => {
+        const updatedTasks = prevTasks.map(task => {
+          if (task.id === taskId) {
+            return { ...task, is_completed: !task.is_completed }; // Toggle the completion status
+          }
+          return task;
+        });
+        return updatedTasks;
+      });
+    } catch (error) {
+      console.error('Error marking task as completed:', error);
+    }
+  }
+};
 
   return (
     <div>
@@ -130,7 +144,17 @@ const handleMarkAsCompleted = async (taskId) => {
       
       <div className="w-full max-w-screen-lg">
         <ul>
-          {tasks.map((task) => (
+        {tasks
+          .sort((a, b) => {
+            // Sort tasks with completed ones at the bottom
+            if (a.is_completed && !b.is_completed) {
+              return 1;
+            } else if (!a.is_completed && b.is_completed) {
+              return -1;
+            }
+            return 0;
+          })
+          .map((task) => (
               <li
                 key={task.id}
                 className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4 p-6"
@@ -154,9 +178,12 @@ const handleMarkAsCompleted = async (taskId) => {
                     </button>
 
                     {/* Mark as Completed Button */}
-                    <button className='bg-purple btn-purple' onClick={() => handleMarkAsCompleted(task.id)}>
-                      Mark as Completed
-                    </button>
+                    <button
+                      className={`bg-purple btn-purple`}
+                      onClick={() => handleMarkAsCompleted(task.id)}
+                    >
+                      {task.is_completed ? 'Mark as Uncompleted' : 'Mark as Completed'}
+                  </button>
                   </>
                 )}
                 <div>
@@ -189,6 +216,3 @@ const handleMarkAsCompleted = async (taskId) => {
     </div>
   );
 }
-
-
-
