@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom';
+
 
 const AddGoalModal = ({ isOpen, onRequestClose, onAddGoal }) => {
+  const navigate = useNavigate();
   const [newGoal, setNewGoal] = useState({
     name: '',
     description: '',
@@ -25,6 +28,8 @@ const AddGoalModal = ({ isOpen, onRequestClose, onAddGoal }) => {
 
     // Add the new goal and close the modal
     onAddGoal(newGoal);
+    navigate('/goals');
+    window.location.reload();
     onRequestClose();
   };
 
