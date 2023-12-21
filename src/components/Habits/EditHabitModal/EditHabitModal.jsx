@@ -15,6 +15,7 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
   const handleUpdateHabit = () => {
     onUpdateHabit(editedHabit);
     onRequestClose();
+    window.location.reload()
   };
 
   const handleDeleteHabit = () => {
@@ -22,6 +23,7 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
     if (isConfirmed) {
       onDeleteHabit(habit.id);
       onRequestClose();
+      window.location.reload()
     }
   };
 
@@ -61,7 +63,7 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
         </div>
           <button
             type="button"
-            className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"
+            className="btn-pink bg-pink"
             onClick={handleUpdateHabit}
           >
             Update
@@ -69,7 +71,7 @@ export default function EditHabitModal({ isOpen, onRequestClose, habit, onUpdate
 
         <button
           type="button"
-          className="btn w-full bg-red-500 text-white px-4 py-2 mt-2 rounded-md"
+          className="btn-teal bg-blue1"
           onClick={handleDeleteHabit}
         >
           Delete
