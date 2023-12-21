@@ -16,7 +16,6 @@
 6. [Challenges and Wins](#challenges-and-wins)
 7. [Key Learning/Takeaways](#key-learning/takeaways)
 8. [Future Improvements](#future-improvements)
-9. [Known Bugs](#known-bugs)
 
 ---
 
@@ -217,9 +216,5 @@ Allow the user to set multiple frequencies for goal or habit completion.
 Implement chatbot API to help user break down goals into habits.
 Include more comprehensive data visualisation of tasks, goals and habits.
 
-
-## Known Bugs
-
-Currently, there is a bug in the fetching of data where all users can see goals set by the different users.
 
 
