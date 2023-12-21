@@ -24,6 +24,7 @@ const AddHabitModal = ({ isOpen, onRequestClose, onAddHabit }) => {
 
     // Add the new habit and close the modal
     onAddHabit(newHabit);
+    window.location.reload()
     onRequestClose();
   };
 
@@ -63,7 +64,7 @@ const AddHabitModal = ({ isOpen, onRequestClose, onAddHabit }) => {
           </div>
           <button
             type="button"
-            className="btn w-full bg-blue-500 text-pink px-4 py-2 rounded-md"
+            className="btn-pink bg-pink"
             onClick={handleAddHabit}
           >
             Add Habit
