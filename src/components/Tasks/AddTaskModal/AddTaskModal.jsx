@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom';
 
 const AddTaskModal = ({ isOpen, onRequestClose, onAddTask }) => {
+  const navigate = useNavigate();
   const [newTask, setNewTask] = useState({
     title: '',
     description: '',
@@ -24,6 +26,8 @@ const AddTaskModal = ({ isOpen, onRequestClose, onAddTask }) => {
 
     // Add the new task and close the modal
     onAddTask(newTask);
+    navigate('/tasks');
+    window.location.reload();
     onRequestClose();
   };
 
