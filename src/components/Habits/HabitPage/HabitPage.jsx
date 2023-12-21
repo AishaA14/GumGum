@@ -83,7 +83,7 @@ async function HabitChart(id, setChartData) {
       labels,
       datasets: [
         {
-          label: 'Dataset 1',
+          label: 'Completed',
           data: HabitsInLast7Days.map((item) => item[1]),
           backgroundColor: 'rgba(255, 99, 132, 0.5)',
         },
@@ -232,6 +232,7 @@ const HabitPage = () => {
           }
         );
       }
+      window.location.reload()
     } catch (error) {
       console.error('Error marking habit as completed:', error);
     }
@@ -295,7 +296,7 @@ const HabitPage = () => {
           onDeleteHabit={handleDeleteHabit}
         />
       )}
-      <button className='btn mx-2' onClick={handleOpenModal}>
+      <button className='btn-pink bg-pink' onClick={handleOpenModal}>
         Add Habit
       </button>
       <AddHabitModal
