@@ -50,6 +50,7 @@ export default function EditGoalPage() {
     })
       .then(response => {
         console.log('Goal updated successfully:', response.data);
+        navigate('/goals'); // Navigate to goals page
       })
       .catch(error => {
         console.error('Error updating goal:', error);
@@ -130,4 +131,3 @@ export default function EditGoalPage() {
     </div>
   );
 };
-
