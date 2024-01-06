@@ -32,6 +32,7 @@ const AddGoalModal = ({ isOpen, onRequestClose, onAddGoal }) => {
     window.location.reload();
     onRequestClose();
   };
+  
 
   return (
     <Modal
